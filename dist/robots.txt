@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://al-haddadah-riyadh.beigealto4.chatgpt.site/sitemap.xml
