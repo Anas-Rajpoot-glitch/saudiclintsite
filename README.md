@@ -6,7 +6,7 @@ Al-Haddadah’s bilingual welding and aluminum workshop website in Riyadh. Arabi
 
 Import this repository into Vercel, select the `main` branch, and leave the root directory at the repository root. The included `vercel.json` runs `node build.mjs --vercel` and publishes `dist/`. The build has no package dependencies.
 
-The build uses Vercel’s production domain for canonical links, language alternates, the sitemap and social previews. To choose a specific custom domain, set `SITE_ORIGIN` to its full HTTPS address and redeploy.
+The primary domain is `https://al-haddadahaluminumwork.com`. Both language versions use it for canonical links, language alternates, the sitemap and social previews, including on Vercel preview builds. To connect the domain, add `al-haddadahaluminumwork.com` to the Vercel project and apply the DNS records Vercel shows at your DNS provider. An explicit `SITE_ORIGIN` build setting overrides the primary domain.
 
 ## Local build
 

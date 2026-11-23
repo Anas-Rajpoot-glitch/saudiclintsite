@@ -9,8 +9,7 @@ import {pageHead, sitemap, escapeHtml as html} from './seo.mjs'
 
 const dist = resolve('dist')
 const vercelBuild = process.argv.includes('--vercel')
-const productionHost = process.env.VERCEL_PROJECT_PRODUCTION_URL
-const origin = new URL(process.env.SITE_ORIGIN || (productionHost && `https://${productionHost}`) || 'https://al-haddadah-riyadh.beigealto4.chatgpt.site').origin
+const origin = new URL(process.env.SITE_ORIGIN || 'https://al-haddadahaluminumwork.com').origin
 const phone='966532006716', waPhone='966575807288'
 const routes=['home','services',...services.map(s=>s.slug),'gallery','about','contact']
 const sections=['home','services','gallery','about','contact']
@@ -23,7 +22,7 @@ const localPath=(p,l=lang)=>(l==='en'?'en/':'')+(p==='home'?'index.html':(servic
 const cleanPath = path => path.replace(/index\.html$/, '').replace(/\.html$/, '')
 const pagePath = (p, l) => {
   const path = '/' + cleanPath(localPath(p, l))
-  return vercelBuild && path === '/en/' ? '/en' : path
+  return path === '/en/' ? '/en' : path
 }
 const link = (p, l=lang) => vercelBuild ? pagePath(p, l) : cleanPath(relative(dirname(localPath(page)),localPath(p,l)).replaceAll('\\','/')) || './'
 const asset = p => vercelBuild ? '/' + p.replace(/^\//,'') : relative(dirname(localPath(page)),p.replace(/^\//,'')).replaceAll('\\','/')
