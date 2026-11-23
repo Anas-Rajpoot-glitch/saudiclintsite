@@ -248,3 +248,11 @@ html[dir=ltr] select{background-position:right 12px center}
 
 .planning-note{margin-block-start:22px;max-width:58ch}.planning-note h3{font-size:1.22rem;margin-bottom:8px}.contact-top p a{color:#ffc397;text-decoration:underline;text-underline-offset:.2em}.planning-note a,.area-layout p a,.gallery-services a{text-decoration:underline;text-underline-offset:.2em;color:var(--copper)}
 .gallery-services{border-top:1px solid var(--line);padding-block-start:25px;margin-block-start:36px}.gallery-services h2{font-size:1.55rem}.gallery-services ul{list-style:none;padding:0;margin:12px 0 0;display:flex;flex-wrap:wrap;gap:8px 22px}.gallery-services a{font-weight:700}
+
+.social-links{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.social-links a{display:inline-grid;place-items:center;inline-size:44px;block-size:44px;border:1px solid var(--line);border-radius:50%;color:var(--ink)}
+.foot-brand .social-links{margin-block-start:16px}
+.foot-brand .social-links a{color:#f0f2ee;border-color:#526061}
+.social-links a:is(:hover,:focus-visible){color:var(--ink);background:var(--orange);border-color:var(--orange)}
+.contact-social{margin-block-start:18px;padding-block-start:15px;border-top:1px solid var(--line)}
+.contact-social h3{font-size:1.1rem;margin-block-end:10px}

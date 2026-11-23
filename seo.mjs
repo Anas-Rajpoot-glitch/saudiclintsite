@@ -1,4 +1,4 @@
-import {brand, legalName, workshopLocation} from './content.mjs'
+import {brand, legalName, socialProfiles, workshopLocation} from './content.mjs'
 import {services} from './services.mjs'
 import {projects} from './gallery.mjs'
 import {searchCopy} from './search-content.mjs'
@@ -18,6 +18,7 @@ export function pageHead({page, lang, service, origin, pathFor, name, asset, pho
   const business = {
     '@type': 'LocalBusiness', '@id': businessId, name: brand[lang], legalName: legalName[lang],
     url: origin + '/', logo: origin + '/assets/anvil-gearworks-emblem.png', image: origin + '/assets/hero.webp',
+    sameAs: socialProfiles.map(profile => profile.url),
     telephone: '+' + phone, areaServed: area,
     address: {'@type': 'PostalAddress', addressLocality: area.name, addressCountry: 'SA'},
     openingHoursSpecification: [{'@type': 'OpeningHoursSpecification', dayOfWeek: ['Saturday','Sunday','Monday','Tuesday','Wednesday','Thursday'], opens: '07:00', closes: '23:00'}],

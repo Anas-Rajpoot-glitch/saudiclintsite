@@ -1,4 +1,7 @@
 const paths = {
+  facebook: '<path fill="currentColor" stroke="none" d="M14.2 22v-9h3l.46-3.5H14.2V7.3c0-1 .28-1.7 1.74-1.7h1.86V2.47c-.32-.04-1.43-.14-2.73-.14-2.7 0-4.55 1.64-4.55 4.67v2.5H7.46V13h3.06v9z"/>',
+  instagram: '<rect x="2.9" y="2.9" width="18.2" height="18.2" rx="5.2" stroke-width="2"/><circle cx="12" cy="12" r="4.4" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.17" fill="currentColor" stroke="none"/>',
+  youtube: '<path fill="currentColor" stroke="none" fill-rule="evenodd" d="M22.5 6.8a3 3 0 0 0-2.1-2.1C18.5 4.2 12 4.2 12 4.2s-6.5 0-8.4.5a3 3 0 0 0-2.1 2.1A29 29 0 0 0 1 12a29 29 0 0 0 .5 5.2 3 3 0 0 0 2.1 2.1c1.9.5 8.4.5 8.4.5s6.5 0 8.4-.5a3 3 0 0 0 2.1-2.1A29 29 0 0 0 23 12a29 29 0 0 0-.5-5.2ZM9.9 15.6V8.4l6.3 3.6z"/>',
   phone: '<path d="m7 3 2.5 4.7-2 2a15 15 0 0 0 6.8 6.8l2-2L21 17v2.3c0 1-1 1.8-2 1.7C10.5 20.2 3.8 13.5 3 5c-.1-1 .7-2 1.7-2z"/>',
   globe: '<circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18"/>',
   pin: '<path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2.3"/>',

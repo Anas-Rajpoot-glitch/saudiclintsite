@@ -2,7 +2,7 @@ import {mkdirSync,writeFileSync} from 'node:fs'
 import {resolve,relative,dirname} from 'node:path'
 import {services,prices} from './services.mjs'
 import {projects} from './gallery.mjs'
-import {workshopLocation,brand,legalName,districts,summaries,values,reviews} from './content.mjs'
+import {workshopLocation,brand,legalName,socialProfiles,districts,summaries,values,reviews} from './content.mjs'
 import {icon} from './icons.mjs'
 import {planningNotes} from './search-content.mjs'
 import {pageHead, sitemap, escapeHtml as html} from './seo.mjs'
@@ -40,8 +40,16 @@ return `<a class="skip" href="#main">${T('انتقل إلى المحتوى','Ski
 <nav id="main-nav" aria-label="${T('القائمة الرئيسية','Main navigation')}">${sections.map(p=>`<a href="${link(p)}" ${active===p?'aria-current="page"':''}>${name(p)}</a>`).join('')}</nav>
 <div class="head-actions"><a class="lang" data-language href="${link(page,T('en','ar'))}" hreflang="${T('en','ar')}" lang="${T('en','ar')}">${icon('globe',18)}<span>${T('English','العربية')}</span></a>${iconButton(T('اتصل الآن','Call now'),'tel:+'+phone,'phone','call-top')}<button class="menu-toggle" aria-controls="main-nav" aria-expanded="false" aria-label="${T('القائمة','Menu')}">${icon('menu')}</button></div></div></header>`
 }
+function socialLinks() {
+  const links = socialProfiles.map(profile => {
+    const label = T(`${brand.ar} على ${profile.ar}`, `${brand.en} on ${profile.en}`)
+    const accessibleLabel = label + T(' (يفتح في علامة تبويب جديدة)', ' (opens in a new tab)')
+    return `<a href="${html(profile.url)}" target="_blank" rel="noopener noreferrer" aria-label="${html(accessibleLabel)}" title="${html(label)}">${icon(profile.icon, 21)}</a>`
+  })
+  return `<div class="social-links" role="group" aria-label="${T('حساباتنا على مواقع التواصل','Social media profiles')}">${links.join('')}</div>`
+}
 function footer(){
-return `<footer><div class="wrap foot-grid"><div class="foot-brand"><a class="brand" href="${link('home')}">${brandEmblem()}<span><strong>${brand[lang]}</strong><small>${T('للحدادة والأعمال المعدنية','ALUMINUM & IRON WORKS')}</small></span></a><p>${legalName[lang]}.</p><span class="foot-loc">${icon('pin',16)}${T('الرياض، المملكة العربية السعودية','Riyadh, Saudi Arabia')}</span></div>
+return `<footer><div class="wrap foot-grid"><div class="foot-brand"><a class="brand" href="${link('home')}">${brandEmblem()}<span><strong>${brand[lang]}</strong><small>${T('للحدادة والأعمال المعدنية','ALUMINUM & IRON WORKS')}</small></span></a><p>${legalName[lang]}.</p><span class="foot-loc">${icon('pin',16)}${T('الرياض، المملكة العربية السعودية','Riyadh, Saudi Arabia')}</span>${socialLinks()}</div>
 <div><h3>${T('روابط سريعة','Explore')}</h3>${sections.map(s=>`<a href="${link(s)}">${name(s)}</a>`).join('')}</div><div><h3>${name('services')}</h3>${services.map(s=>`<a href="${link(s.slug)}">${s[lang].name}</a>`).join('')}</div><div><h3>${name('contact')}</h3><a href="tel:+${phone}">${icon('phone',15)} <bdi>053 200 6716</bdi></a><a href="${wLink()}">${icon('whatsapp',16)} <bdi>057 580 7288</bdi></a><a href="tel:+${waPhone}">${T('الهاتف الثاني','Second phone')} <bdi>057 580 7288</bdi></a><p>${T('السبت إلى الخميس','Saturday to Thursday')}<br>${T('٧ صباحاً – ١١ مساءً','7 AM – 11 PM')}</p></div></div><div class="wrap foot-base">© ${new Date().getFullYear()} ${brand[lang]} · ${T('جميع الحقوق محفوظة','All rights reserved')}</div></footer>
 <a class="float-wa" href="${wLink()}" aria-label="${T('تواصل معنا عبر واتساب','Chat with us on WhatsApp')}" title="${T('تواصل عبر واتساب','Chat on WhatsApp')}">${icon('whatsapp',30)}</a>`
 }
@@ -156,7 +164,7 @@ function workshopMap() {
 function contactPage(){
 return `<section class="contact-top"><div class="wrap">${crumbs(name('contact'))}${eyebrow(T('تواصل مع الورشة','Get in touch'))}<h1>${T('اطلب عرض سعر لمشروعك','Get a quote for your project')}</h1><p>${linkedCopy(T('حدّد الخدمة وموقع المشروع لنراجع طلبك عبر واتساب. إذا كنت تقارن بين الخامات أو طرق الفتح، تصفّح [دليل خدمات الورشة](services) أولاً.','Choose a service and share the project location for a WhatsApp quote. If you’re comparing materials or opening styles, start with the [workshop service guide](services).'))}</p></div></section>
 ${workshopMap()}
-<section class="section paper contact-section"><div class="wrap form-layout"><div class="contact-info"><h2>${T('تواصل مباشر','Contact the workshop')}</h2><p>${legalName[lang]}</p><div class="contact-line">${icon('phone')}<div><span>${T('هاتف الورشة','Workshop phone')}</span><a href="tel:+${phone}" dir="ltr">053 200 6716</a></div></div><div class="contact-line">${icon('whatsapp')}<div><span>${T('واتساب','WhatsApp')}</span><a href="${wLink()}" dir="ltr">057 580 7288</a></div></div><div class="contact-line">${icon('pin')}<div><span>${T('منطقة الخدمة','Service area')}</span><strong>${T('جميع أحياء الرياض، السعودية','All districts of Riyadh, Saudi Arabia')}</strong></div></div><div class="contact-line">${icon('clock')}<div><span>${T('أوقات العمل','Opening hours')}</span><strong>${T('السبت إلى الخميس · ٧ صباحاً – ١١ مساءً','Saturday to Thursday · 7 AM – 11 PM')}</strong></div></div></div>${requestForm(true)}</div></section>`
+<section class="section paper contact-section"><div class="wrap form-layout"><div class="contact-info"><h2>${T('تواصل مباشر','Contact the workshop')}</h2><p>${legalName[lang]}</p><div class="contact-line">${icon('phone')}<div><span>${T('هاتف الورشة','Workshop phone')}</span><a href="tel:+${phone}" dir="ltr">053 200 6716</a></div></div><div class="contact-line">${icon('whatsapp')}<div><span>${T('واتساب','WhatsApp')}</span><a href="${wLink()}" dir="ltr">057 580 7288</a></div></div><div class="contact-line">${icon('pin')}<div><span>${T('منطقة الخدمة','Service area')}</span><strong>${T('جميع أحياء الرياض، السعودية','All districts of Riyadh, Saudi Arabia')}</strong></div></div><div class="contact-line">${icon('clock')}<div><span>${T('أوقات العمل','Opening hours')}</span><strong>${T('السبت إلى الخميس · ٧ صباحاً – ١١ مساءً','Saturday to Thursday · 7 AM – 11 PM')}</strong></div></div><div class="contact-social"><h3>${T('تابعنا','Follow us')}</h3>${socialLinks()}</div></div>${requestForm(true)}</div></section>`
 }
 function pagePhoto(route, language) {
   const serviceIndex = services.findIndex(s => s.slug === route)

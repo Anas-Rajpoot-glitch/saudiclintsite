@@ -1,5 +1,10 @@
 export const brand = {ar:'الحدادة للألمنيوم', en:'Al-Haddadah'}
 export const legalName = {ar:'مؤسسة محمد بن عبيد بن ثواب المطيري للحدادة والألمنيوم',en:'Mohammed bin Obaid bin Thawab Al-Mutairi Establishment for Ironwork and Aluminum'}
+export const socialProfiles = [
+  {icon: 'facebook', ar: 'فيسبوك', en: 'Facebook', url: 'https://www.facebook.com/people/Al-Haddadah-Aluminum-Iron/61589456815766/'},
+  {icon: 'instagram', ar: 'إنستغرام', en: 'Instagram', url: 'https://www.instagram.com/alhaddadahaluminumiron/'},
+  {icon: 'youtube', ar: 'يوتيوب', en: 'YouTube', url: 'https://www.youtube.com/@Al-HaddadahAluminumIron'},
+]
 export const workshopLocation = {
   url: 'https://maps.app.goo.gl/uznGUWqqEym19546A',
   latitude: 24.829123,
